@@ -9,7 +9,7 @@ let g:loaded_nerdtree_fugitive = 1
 call NERDTreeAddMenuSeparator({
     \ 'isActiveCallback': 'NERDTreeFugitiveEnabled'})
 
-call NERDTreeAddSubmenu({
+let gitSubMenu = NERDTreeAddSubmenu({
     \ 'text': '(g)it',
     \ 'shortcut': 'g', })
  
@@ -17,6 +17,7 @@ call NERDTreeAddSubmenu({
 call NERDTreeAddMenuItem({
     \ 'text': '(a)dd',
     \ 'shortcut': 'a',
+    \ 'parent': gitSubMenu,
     \ 'isActiveCallback': 'NERDTreeFugitiveEnabled',
     \ 'callback': 'NERDTreeFugitiveAdd' })
  
@@ -30,6 +31,7 @@ endfunction
 "open the file the cursor is on in eog
 function! NERDTreeFugitiveAdd()
     let n = g:NERDTreeFileNode.GetSelected()
-    let p = n.path.str({'escape': 1})
-    execute "normal! :Gwrite " . p . "<C-m>"
+    let p = n.path.str()
+    call nerdtree#closeTreeIfOpen()
+    exe "e!" . p | Gwrite
 endfunction

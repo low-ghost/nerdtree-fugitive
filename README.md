@@ -1,8 +1,3 @@
-"6 Press ? for help
+#Nerdtree-fugitive
 
->----------Bookmarks----------
-
-.. (up a dir)
-</Bundle/nerdtree-fugitive/
-▸ nerdtree_plugin/
-  README.md
+A plugin that adds git and fugitive functionality to NERDtree
