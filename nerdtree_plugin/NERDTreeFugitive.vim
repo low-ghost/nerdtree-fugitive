@@ -1,37 +1,65 @@
+"git dir is b:git_dir
 
-"guard against sourcing the script twice
 if exists("g:loaded_nerdtree_fugitive")
     finish
 endif
 
 let g:loaded_nerdtree_fugitive = 1
- "add a menu separator (a row of dashes) before our new menu item
+
 call NERDTreeAddMenuSeparator({
     \ 'isActiveCallback': 'NERDTreeFugitiveEnabled'})
 
 let gitSubMenu = NERDTreeAddSubmenu({
     \ 'text': '(g)it',
     \ 'shortcut': 'g', })
- 
-"add the main menu item
+
 call NERDTreeAddMenuItem({
-    \ 'text': '(a)dd',
-    \ 'shortcut': 'a',
+    \ 'text': '(w)rite - open file and Gwrite',
+    \ 'shortcut': 'w',
     \ 'parent': gitSubMenu,
     \ 'isActiveCallback': 'NERDTreeFugitiveEnabled',
-    \ 'callback': 'NERDTreeFugitiveAdd' })
- 
-"we only want the menu item to be displayed if the current
-"node is an image file
+    \ 'callback': 'NERDTreeFugitiveWrite' })
+
+call NERDTreeAddMenuItem({
+    \ 'text': '(s)tatus - jump to file in fugitive status window',
+    \ 'shortcut': 's',
+    \ 'parent': gitSubMenu,
+    \ 'isActiveCallback': 'NERDTreeFugitiveEnabled',
+    \ 'callback': 'NERDTreeFugitiveStatus' })
+
+
+call NERDTreeAddMenuItem({
+    \ 'text': '(l)og - open file and go to fugitive log window',
+    \ 'shortcut': 'l',
+    \ 'parent': gitSubMenu,
+    \ 'isActiveCallback': 'NERDTreeFugitiveEnabled',
+    \ 'callback': 'NERDTreeFugitiveLog' })
+
 function! NERDTreeFugitiveEnabled()
     let p = g:NERDTreeFileNode.GetSelected().path
     return !p.isDirectory
 endfunction
- 
-"open the file the cursor is on in eog
-function! NERDTreeFugitiveAdd()
+
+function! s:getPath()
     let n = g:NERDTreeFileNode.GetSelected()
-    let p = n.path.str()
+    let g:ntfLastNode = n.path.str()
+    return g:ntfLastNode
+endfunction
+
+function! NERDTreeFugitiveWrite()
+    let p = s:getPath()
     call nerdtree#closeTreeIfOpen()
     exe "e!" . p | Gwrite
+endfunction
+
+function! NERDTreeFugitiveStatus()
+    let p = fnamemodify(s:getPath(), ":t")
+    call nerdtree#closeTreeIfOpen()
+    exe "Gstatus" | exe "/" . p
+endfunction
+
+function! NERDTreeFugitiveLog()
+    let p = s:getPath()
+    call nerdtree#closeTreeIfOpen()
+    exe "e!" . p | silent Glog | copen
 endfunction
