@@ -1,4 +1,4 @@
-#Nerdtree-fugitive
+#NERDtree-Fugitive
 
 ######A plugin that adds git and vim-fugitive functionality to NERDtree
 
