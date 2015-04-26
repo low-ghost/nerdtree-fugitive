@@ -2,7 +2,9 @@
 
 ######A plugin that adds git and vim-fugitive functionality to NERDtree
 
-Very straight forward implementation that uses the NERDTree menu api to make calls to vum-fugitive. This plugin requires both scrooloose/nerdtree at https://github.com/scrooloose/nerdtree and tpope/vim-fugitive, also on github. Though you could also open the file and perform vim-fugitive calls directly, I find it useful to view the directory structure and be able to perform git functions directly from a GUI menu, especially with the xuyuanp/nerdtree-git-plugin for visual markers.
+Very straight forward implementation that uses the NERDTree menu api to make calls to vim-fugitive. This plugin requires both [scrooloose/nerdtree](https://github.com/scrooloose/nerdtree) and [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive). Though you could also open the file and perform vim-fugitive calls from the commandline or via shortcuts, I find it useful to view the directory structure and be able to perform git functions directly from a GUI menu, especially with the xuyuanp/nerdtree-git-plugin for visual markers.
+
+I only worked on this for a few hours, so let me know if there are any bugs or features that could be improved/added. I'm also planning something similair for Cntrp
 
 ###Installation
 Install it with Vundle by putting
