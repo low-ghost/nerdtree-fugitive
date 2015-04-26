@@ -1,16 +1,19 @@
 #Nerdtree-fugitive
 
-A plugin that adds git and vim-fugitive functionality to NERDtree
+######A plugin that adds git and vim-fugitive functionality to NERDtree
 
-Very straight forward implementation that uses the NERDTree menu api to make calls to vum-fugitive.
+Very straight forward implementation that uses the NERDTree menu api to make calls to vum-fugitive. This plugin requires both scrooloose/nerdtree at https://github.com/scrooloose/nerdtree and tpope/vim-fugitive, also on github.
 
-Obviously requires both scrooloose/nerdtree at https://github.com/scrooloose/nerdtree and tpope/vim-fugitive, also on github.
+###Installation
+Install it with Vundle by putting
+`Bundle “low-ghost/nerdtree-fugitive”
+in your .vimrc.bundles or equivalent file, source your vimrc and run :BundleInstall in vim. Similar with Plug and NeoBundle.
 
-Install it with Vundle by putting Bundle “low-ghost/nerdtree-fugitive” in your .vimrc.bundles or equivalent file, source your vimrc and run :BundleInstall in vim. Similar with Plug and NeoBundle.
-
+###Additional
 Works well with Xuyuanp/nerdtree-git-plugin, which provides visual markers of file status.
 
-This plugin adds a (g)it menu to the NERDtree menu, brought up by toggling NERDtree and hitting ‘m’ then ‘g’
+###What it does:
+Adds a (g)it menu to the NERDtree menu, entered by toggling NERDtree and hitting ‘m’ then ‘g’
 
 ###The Menu
 
@@ -24,3 +27,9 @@ This plugin adds a (g)it menu to the NERDtree menu, brought up by toggling NERDt
     (g)rep - search this object with normal grep
     Ggr(e)p - search the full repo
     (s)tatus - jump to file in fugitive status window
+
+## Credits
+
+*  [scrooloose](https://github.com/scrooloose): NERDtree and its API
+*  [tpope](https://github.com/tpope/vim-fugitive): vim-fugitive and Git wrapper
+*  [Xuyuanp](https://github.com/Xuyuanp/nerdtree-git-plugin): optional visual elements
