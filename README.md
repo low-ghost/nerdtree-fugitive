@@ -25,9 +25,9 @@ Adds a (g)it menu to the NERDtree menu, entered by toggling NERDtree and hitting
     (d)iff - open diff or merge conflict tool
     (o)pen a version from another branch
     (r)emove - open buffer then Gremove it and destroy the buffer
-    (b)lame - open file and go to Gblame quickfix windowGgr
-    (g)rep - search this object with normal grep
-    Ggr(e)p - search the full repo
+    (b)lame - open file and go to Gblame quickfix window
+    (g)rep - search this file with normal grep
+    Ggr(e)p - search the full repo with git grep
     (s)tatus - jump to file in fugitive status window
 
 ## Credits
