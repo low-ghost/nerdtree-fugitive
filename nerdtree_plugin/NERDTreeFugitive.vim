@@ -37,6 +37,13 @@ call NERDTreeAddMenuItem({
     \ 'callback': 'NERDTreeFugitiveLog' })
 
 call NERDTreeAddMenuItem({
+    \ 'text': '(d)iff - open diff or merge conflict tool',
+    \ 'shortcut': 'd',
+    \ 'parent': gitSubMenu,
+    \ 'scope': 'FileNode',
+    \ 'callback': 'NERDTreeFugitiveDiff' })
+
+call NERDTreeAddMenuItem({
     \ 'text': '(o)pen a version from another branch',
     \ 'shortcut': 'o',
     \ 'parent': gitSubMenu,
@@ -120,6 +127,12 @@ function! NERDTreeFugitiveBlame()
     let p = s:getPath()
     call nerdtree#closeTreeIfOpen()
     exe "e!" . p | silent Gblame
+endfunction
+
+function! NERDTreeFugitiveDiff()
+    let p = s:getPath()
+    call nerdtree#closeTreeIfOpen()
+    exe "e!" . p | silent Gdiff
 endfunction
 
 function! NERDTreeFugitiveGgrep()
