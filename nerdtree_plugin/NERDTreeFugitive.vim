@@ -96,7 +96,7 @@ endfunction
 
 function! NERDTreeFugitiveWrite()
     let p = s:getPath()
-    call nerdtree#closeTreeIfOpen()
+    call g:NERDTree.Close()
     exe "e! " . p | Gwrite | exe "e " . p
 endfunction
 
@@ -107,31 +107,31 @@ endfunction
 
 function! NERDTreeFugitiveRemove()
     let p = s:getPath()
-    call nerdtree#closeTreeIfOpen()
+    call g:NERDTree.Close()
     exe "e!" . p | Gremove
 endfunction
 
 function! NERDTreeFugitiveStatus()
     let p = fnamemodify(s:getPath(), ":t")
-    call nerdtree#closeTreeIfOpen()
+    call g:NERDTree.Close()
     exe "Gstatus" | exe "/" . p
 endfunction
 
 function! NERDTreeFugitiveLog()
     let p = s:getPath()
-    call nerdtree#closeTreeIfOpen()
+    call g:NERDTree.Close()
     exe "e!" . p | silent Glog | copen
 endfunction
 
 function! NERDTreeFugitiveBlame()
     let p = s:getPath()
-    call nerdtree#closeTreeIfOpen()
+    call g:NERDTree.Close()
     exe "e!" . p | silent Gblame
 endfunction
 
 function! NERDTreeFugitiveDiff()
     let p = s:getPath()
-    call nerdtree#closeTreeIfOpen()
+    call g:NERDTree.Close()
     exe "e!" . p | silent Gdiff
 endfunction
 
@@ -139,7 +139,7 @@ function! NERDTreeFugitiveGgrep()
     echo "=======================================\n"
     echo "complete git grep command with arguments and search terms:\n"
     let cmd = input(':Ggrep ')
-    call nerdtree#closeTreeIfOpen()
+    call g:NERDTree.Close()
     if cmd != ''
         exe ':silent Ggrep ' . cmd | copen
     else
@@ -152,7 +152,7 @@ function! NERDTreeFugitiveGrep()
     echo "=======================================\n"
     echo "complete grep command with options and arguments (filename appended):\n"
     let cmd = input(':grep ')
-    call nerdtree#closeTreeIfOpen())
+    call g:NERDTree.Close()
     if cmd != ''
         exe ":silent grep " . cmd . " " . p | copen
     else
@@ -164,7 +164,7 @@ function! NERDTreeFugitiveOpen()
     let p = s:getPath()
     echo "=======================================\n"
     let cmd = input('Branch name: ')
-    call nerdtree#closeTreeIfOpen()
+    call g:NERDTree.Close()
     if cmd != ''
         exe ':silent Gedit ' . cmd . ":" . p
     else
